@@ -1,0 +1,421 @@
+ html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .app-root {
+            height: 100%;
+            width: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .glass-dark {
+            background: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.2);
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes floatY {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(255, 107, 53, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(255, 107, 53, 0.7);
+            }
+        }
+
+        @keyframes spin-slow {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-60px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(60px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            70% {
+                transform: scale(0.9);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .anim-fade-up {
+            opacity: 0;
+        }
+
+        .anim-fade-up.visible {
+            animation: fadeUp 0.7s ease forwards;
+        }
+
+        .anim-slide-left {
+            opacity: 0;
+        }
+
+        .anim-slide-left.visible {
+            animation: slideInLeft 0.7s ease forwards;
+        }
+
+        .anim-slide-right {
+            opacity: 0;
+        }
+
+        .anim-slide-right.visible {
+            animation: slideInRight 0.7s ease forwards;
+        }
+
+        .anim-scale {
+            opacity: 0;
+        }
+
+        .anim-scale.visible {
+            animation: scaleIn 0.6s ease forwards;
+        }
+
+        .float-anim {
+            animation: floatY 3s ease-in-out infinite;
+        }
+
+        .float-anim-d1 {
+            animation: floatY 3.5s ease-in-out 0.3s infinite;
+        }
+
+        .float-anim-d2 {
+            animation: floatY 4s ease-in-out 0.6s infinite;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FF6B35, #FF3E00);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            transition: all 0.3s ease;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Gradient backgrounds */
+        .bg-hero {
+            background: linear-gradient(135deg, #1a0a00 0%, #2d1200 30%, #0d0d0d 70%, #1a0500 100%);
+        }
+
+        .bg-section-dark {
+            background: linear-gradient(180deg, #0d0d0d 0%, #1a0a00 50%, #0d0d0d 100%);
+        }
+
+        .bg-section-warm {
+            background: linear-gradient(180deg, #1a0a00 0%, #2d1200 50%, #1a0a00 100%);
+        }
+
+        /* Food emoji floaters */
+        .food-floater {
+            position: absolute;
+            font-size: 2.5rem;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        /* Star rating */
+        .star {
+            color: #FFD700;
+        }
+
+        /* Menu card gradient borders */
+        .menu-card {
+            position: relative;
+            border-radius: 1rem;
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.5), rgba(255, 62, 0, 0.1), rgba(255, 107, 53, 0.3));
+        }
+
+        .menu-card-inner {
+            background: rgba(13, 13, 13, 0.9);
+            border-radius: calc(1rem - 2px);
+            padding: 1.5rem;
+            height: 100%;
+        }
+
+        /* Nav */
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FF6B35;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Scrollbar */
+        .app-root::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .app-root::-webkit-scrollbar-track {
+            background: #0d0d0d;
+        }
+
+        .app-root::-webkit-scrollbar-thumb {
+            background: #FF6B35;
+            border-radius: 4px;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 9999;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.35s ease;
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Gallery hover */
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+
+        .gallery-item .gallery-overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item img,
+        .gallery-item .gallery-placeholder {
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img,
+        .gallery-item:hover .gallery-placeholder {
+            transform: scale(1.1);
+        }
+
+        /* Plan card shine */
+        .plan-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plan-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.05) 50%, transparent 60%);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+        }
+
+        .plan-card:hover::before {
+            left: 100%;
+        }
+
+        /* Section divider */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.3), transparent);
+        }
+
+        /* Order success overlay */
+        .order-success-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+        }
+
+        .order-success-overlay.show {
+            display: flex;
+        }
+
+        .order-success-content {
+            animation: bounceIn 0.6s ease forwards;
+        }
+         body {
+            box-sizing: border-box;
+        }
